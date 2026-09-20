@@ -1,16 +1,16 @@
 # Windows 98 Time Machine
 
-A browser-based retro desktop inspired by Windows 98, with a selectable timeline from 1998 through 2019.
+A Vite/React retro desktop with selectable eras from 1998 through 2019.
 
-## Included
+## Flash support
 
-- Desktop, icons, Start menu, taskbar, clock, and draggable-style application windows
-- Era switcher with period-specific wallpapers, browser names, app labels, and Start menu entries
-- Safe built-in Internet museum page (no unrestricted browsing or downloads)
-- Macromedia Flash Player-inspired local sandbox with a playable vector animation demo
-- Virtual My Computer / My Documents views containing a sample `welcome.swf`
+The Flash Player window now uses [Ruffle](https://ruffle.rs/), an open-source Flash emulator. It can play compatible SWF animations and games from:
 
-This project intentionally simulates the classic Flash experience. It does not bundle proprietary Macromedia/Adobe binaries or execute arbitrary SWF files. That keeps the app safe and compatible with modern browsers after the original Flash browser plug-in was discontinued.
+- Local `.swf` files selected with **Open SWF**
+- HTTPS URLs that permit browser cross-origin access
+- The built-in retro browser demo
+
+Ruffle is loaded from the official package CDN at runtime, so the app does not ship the discontinued proprietary Macromedia/Adobe Flash plug-in. Ruffle supports many ActionScript 1/2 movies; ActionScript 3 and complex games may have compatibility gaps. Only open SWF files that you have permission to use.
 
 ## Run locally
 
@@ -20,3 +20,5 @@ npm run dev
 ```
 
 Build for deployment with `npm run build`.
+
+For a fully offline deployment, self-host the Ruffle web assets instead of using the runtime CDN and update the script URL in `src/main.jsx`.
